@@ -2,6 +2,15 @@
 
 An esbuild plugin that parses the Swagger specs (YAML and JSON). 
 
+## ⚠️ Important Notice
+
+**This library is currently a Work in Progress (WIP) and has not been released to [npm](https://www.npmjs.com/) yet.**
+
+Please note that the API and features are subject to change, and the codebase may contain unfinished or unstable functionality. We recommend not using this library in production environments until an official release has been published.
+
+Stay tuned for updates, and feel free to contribute or provide feedback as development continues!
+
+
 ## Setup
 
 ```js

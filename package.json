@@ -1,0 +1,35 @@
+{
+  "name": "esbuild-plugin-swagger-spec-parser",
+  "version": "0.0.1",
+  "description": "An esbuild plugin that parses swagger specs.",
+  "keywords": [
+    "esbuild",
+    "esbuild-plugin",
+    "plugin",
+    "ejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexGrabovaj/esbuild-plugin-swagger-spec-parser"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Aleksander Grabovaj"
+  },
+  "scripts": {
+    "build": "npx tsx esbuild.config.mts",
+    "sort-package-json": "npx sort-package-json ./package.json",
+    "start": "npm run build -- --dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "esbuild": "0.23.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

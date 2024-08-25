@@ -26,7 +26,7 @@ await esbuild.build({
 ```
 
 ## Usage
-The entrypoint files for swagger specification must be named with the prefix `swagger.(ya?ml|json)` e.g. `openapi.swagger.yaml`, or `openapi.swagger.json`. 
+The entrypoint files for swagger specification must be named with `swagger.(ya?ml|json)` as suffix. e.g. `openapi.swagger.yaml`, or `openapi.swagger.json`. 
 
 This allows the plugin to identify which files should be parsed. 
 

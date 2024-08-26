@@ -16,14 +16,29 @@
   "author": {
     "name": "Aleksander Grabovaj"
   },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/swaggerSpecParser.d.ts",
+        "default": "./dist/esm/swaggerSpecParser.js"
+      },
+      "require": {
+        "types": "./dist/types/swaggerSpecParser.d.ts",
+        "default": "./dist/cjs/swaggerSpecParser.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "build": "npx tsx esbuild.config.mts",
+    "prebuild": "rm -rf dist",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "build:esm": "tsc -p ./tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
     "sort-package-json": "npx sort-package-json ./package.json",
-    "start": "npm run build -- --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@apidevtools/swagger-cli": "^4.0.4"
+    "@apidevtools/swagger-parser": "^10.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.5.0",

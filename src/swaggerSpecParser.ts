@@ -1,6 +1,6 @@
 import * as esbuild from "esbuild";
-import { execSync } from "node:child_process";
-import path from "node:path";
+import * as path from "node:path";
+import SwaggerParser from "@apidevtools/swagger-parser";
 
 const swaggerSpecFileRegExp = /\.swagger\.(ya?ml|json)$/;
 
@@ -20,15 +20,12 @@ export const SwaggerSpecParser: esbuild.Plugin = {
 
     build.onLoad(
       { filter: swaggerSpecFileRegExp, namespace: "swagger-spec-parser" },
-      (args) => {
-        const command = `
-      temp_file=$(mktemp)  >/dev/null 2>&1 &&
-      swagger-cli bundle -o $temp_file ${args.path} >/dev/null 2>&1 
-      cat $temp_file`;
+      async (args) => {
+        const api = await SwaggerParser.dereference(args.path);
 
         return {
           loader: "json",
-          contents: execSync(command, { stdio: "pipe" }).toString(),
+          contents: JSON.stringify(api.info),
         };
       }
     );

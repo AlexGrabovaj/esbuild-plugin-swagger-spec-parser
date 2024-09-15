@@ -14,7 +14,8 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Aleksander Grabovaj"
+    "name": "Aleksander Grabovaj",
+    "email": "aleksander.grabovaj@gmail.com"
   },
   "exports": {
     ".": {
@@ -29,6 +30,7 @@
     },
     "./package.json": "./package.json"
   },
+  "types": "./src/custom.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",

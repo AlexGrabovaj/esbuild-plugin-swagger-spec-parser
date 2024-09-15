@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "./dist/types",
+    "declarationDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "NodeNext",
@@ -13,5 +13,5 @@
     "target": "ESNext"
   },
   "include": ["./src/**/*"],
-  "exclude": ["./tmp/**/*", "./dist/**/*"]
+  "exclude": ["./tmp/**/*", "./dist/**/*", "./src/**/*.test.ts"]
 }

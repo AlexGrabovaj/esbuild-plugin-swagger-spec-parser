@@ -20,22 +20,21 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/types/swaggerSpecParser.d.ts",
+        "types": "./dist/swaggerSpecParser.d.ts",
         "default": "./dist/esm/swaggerSpecParser.js"
       },
       "require": {
-        "types": "./dist/types/swaggerSpecParser.d.ts",
+        "types": "./dist/swaggerSpecParser.d.ts",
         "default": "./dist/cjs/swaggerSpecParser.js"
       }
-    },
-    "./package.json": "./package.json"
+    }
   },
-  "types": "./src/custom.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",
     "build:esm": "tsc -p ./tsconfig.esm.json",
+    "build:types": "cp ./src/custom.d.ts ./dist/",
     "sort-package-json": "npx sort-package-json ./package.json",
     "test": "vitest"
   },

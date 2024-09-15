@@ -1,15 +1,9 @@
 # Esbuild Swagger Specifications Parser Plugin 
 
+[![npm version](https://badge.fury.io/js/esbuild-plugin-swagger-spec-parser.svg)](https://www.npmjs.com/package/esbuild-plugin-swagger-spec-parser)
+
+
 An esbuild plugin that parses the Swagger specs (YAML and JSON). 
-
-## ⚠️ Important Notice
-
-**This library is currently a Work in Progress (WIP) and has not been released to [npm](https://www.npmjs.com/) yet.**
-
-Please note that the API and features are subject to change, and the codebase may contain unfinished or unstable functionality. We recommend not using this library in production environments until an official release has been published.
-
-Stay tuned for updates, and feel free to contribute or provide feedback as development continues!
-
 
 ## Setup
 
@@ -36,6 +30,20 @@ const specsFromYaml = require('./openapi.swagger.yaml')
 
 console.log(specs)         // Parsed to a JSON format 
 console.log(specsFromYaml) // Parsed to a JSON format 
+```
+
+## Typescript
+
+When working with typescript, you might want to specify the type declarations of the swagger spec file you're importing. 
+
+You can currently do that be specifying the reference to the node_module ambient declarations of the plugin. 
+
+```js
+/// <reference path="../node_modules/esbuild-plugin-swagger-spec-parser/dist/custom.d.ts" />
+const specs = require('./openapi.swagger.yaml')
+
+console.log(specs)         // Parsed to a JSON format 
+
 ```
 
 ## License 

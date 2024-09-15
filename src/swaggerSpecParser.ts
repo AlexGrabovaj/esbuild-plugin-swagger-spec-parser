@@ -25,7 +25,7 @@ export const SwaggerSpecParser: esbuild.Plugin = {
 
         return {
           loader: "json",
-          contents: JSON.stringify(api.info),
+          contents: JSON.stringify(api),
         };
       }
     );

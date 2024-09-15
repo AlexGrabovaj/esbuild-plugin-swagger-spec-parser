@@ -30,7 +30,7 @@
     }
   },
   "files": [
-    "dist/**/*"
+    "dist"
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
@@ -39,7 +39,8 @@
     "build:esm": "tsc -p ./tsconfig.esm.json",
     "build:types": "cp ./src/custom.d.ts ./dist/",
     "sort-package-json": "npx sort-package-json ./package.json",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0"

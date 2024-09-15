@@ -19,19 +19,14 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/swaggerSpecParser.d.ts",
-        "default": "./dist/esm/swaggerSpecParser.js"
-      },
-      "require": {
-        "types": "./dist/swaggerSpecParser.d.ts",
-        "default": "./dist/cjs/swaggerSpecParser.js"
-      }
+      "import": "./dist/esm/swaggerSpecParser.js",
+      "require": "./dist/cjs/swaggerSpecParser.js"
     }
   },
   "files": [
     "dist"
   ],
+  "types": "./dist/swaggerSpecParser.d.ts",
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",

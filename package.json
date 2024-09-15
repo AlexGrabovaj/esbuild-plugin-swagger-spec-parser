@@ -29,6 +29,9 @@
       }
     }
   },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",

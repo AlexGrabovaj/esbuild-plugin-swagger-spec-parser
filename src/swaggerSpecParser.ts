@@ -3,9 +3,10 @@ import * as path from "node:path";
 import SwaggerParser from "@apidevtools/swagger-parser";
 
 const swaggerSpecFileRegExp = /\.swagger\.(ya?ml|json)$/;
+const PLUGIN_NAME = "SwaggerSpecParser";
 
 export const SwaggerSpecParser: esbuild.Plugin = {
-  name: "SwaggerSpecParser",
+  name: PLUGIN_NAME,
   setup(build) {
     build.onResolve({ filter: swaggerSpecFileRegExp }, (args) => {
       if (args.resolveDir === "") return;
@@ -21,12 +22,31 @@ export const SwaggerSpecParser: esbuild.Plugin = {
     build.onLoad(
       { filter: swaggerSpecFileRegExp, namespace: "swagger-spec-parser" },
       async (args) => {
-        const api = await SwaggerParser.dereference(args.path);
+        try {
+          const api = await SwaggerParser.dereference(args.path);
 
-        return {
-          loader: "json",
-          contents: JSON.stringify(api),
-        };
+          return {
+            loader: "json",
+            contents: JSON.stringify(api),
+          };
+        } catch (e) {
+          if (e instanceof Error) {
+            return {
+              errors: [
+                { detail: e.message, id: e.name, pluginName: PLUGIN_NAME },
+              ],
+            };
+          } else {
+            return {
+              errors: [
+                {
+                  detail: "Error parsing Swagger specs.",
+                  pluginName: PLUGIN_NAME,
+                },
+              ],
+            };
+          }
+        }
       }
     );
   },
